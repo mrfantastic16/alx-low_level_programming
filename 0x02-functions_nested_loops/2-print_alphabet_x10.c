@@ -3,7 +3,7 @@
 /**
  * print_alphabet_x10 - prints lowercase alphabets x10 in newlines
  *
- * Return: its a void function :\
+ * Return: its a void function :|
  */
 
 void print_alphabet_x10(void)
