@@ -11,7 +11,7 @@ int main(void)
 	unsigned long a = 1;
 	unsigned long b = 1;
 	unsigned long c;
-	unsigned long sum;
+	unsigned long sum = 0;
 
 	while (b < 4000000)
 	{
