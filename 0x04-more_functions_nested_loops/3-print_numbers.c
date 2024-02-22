@@ -1,5 +1,10 @@
 #include "main.h"
 
+/**
+ * print_number - prints number from 0 to 0
+ * Return: void
+ */
+
 void print_numbers(void)
 {
 	int ch;
