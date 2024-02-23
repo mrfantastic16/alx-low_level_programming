@@ -10,21 +10,24 @@ void print_number(int n)
 {
 	int power_10 = 1;
 	int digit;
+	unsigned int n1;
 
 	if (n < 0)
 	{
 		_putchar('-');
-		n = -n;
+		n1 = -n;
 	}
+	else
+		n1 = n;
 
-	while (n / power_10 >= 10)
+	while (n1 / power_10 >= 10)
 		power_10 *= 10;
 	while (power_10 > 0)
 	{
-		digit = n / power_10;
+		digit = n1 / power_10;
 		_putchar(digit + '0');
 
-		n = n - digit * power_10;
+		n1 = n1 - digit * power_10;
 		power_10 = power_10 / 10;
 	}
 }
