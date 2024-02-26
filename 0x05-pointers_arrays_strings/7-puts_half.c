@@ -26,14 +26,8 @@ int _strlen(char *s)
 void puts_half(char *str)
 {
 	int ln = _strlen(str);
-	int n, i;
 
-	if (ln % 2 == 0)
-		n = ln / 2;
-	else
-		n = (ln - 1) / 2;
-
-	for (i = n; i < ln; i++)
-		_putchar(str[i]);
+	for (ln / 2; str[ln] != '\0'; ln++)
+		_putchar(str[ln]);
 	_putchar('\n');
 }
