@@ -1,25 +1,31 @@
-#include "main.h"
-
 /**
- * _strchr - locates a char in a string
- * @s: string source
- * @c: the char to locate
+ * _strspn - search the number of bytes in the intial
+ * segment of s which consist of bytes from accept
  *
- * Return: string located
+ * @s: sergment targeted
+ * @accept reference byte container
+ *
  */
-char *_strchr(char *s, char c)
-{
-	int m = 0, n;
 
-	while (s[m])
-		m++;
-	for (n = 0; n < m + 1; n++)
+unsigned int _strspn(char *s, char *accept)
+{
+	unsigned int byte = 0;
+	int i;
+
+	while (*s)
 	{
-		if (c == s[n])
+
+		for (i = 0; accept[i]; i++)
 		{
-			s += n;
-			return (s);
+			if (accept[i] == *s)
+			{
+				byte++;
+				break;
+			}
+			else if ((accept[i + 1]) == '\0')
+				return (byte);
 		}
+		s++;
 	}
-	return ('\0');
+	return (byte)
 }

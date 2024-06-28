@@ -1,16 +1,18 @@
 #include "main.h"
 #include <stdio.h>
 
+/**
+ * main - check the code
+ *
+ * Return: Always 0.
+ */
 int main(void)
 {
-	char *s = "hello";
-	char *f;
-
-	f = _strchr(s, 'l');
-
-	if (f != NULL)
-	{
-		printf("%s\n", f);
-	}
-	return (0);
+    int c3[3][3] = {
+        {0, 1, 5},
+        {10, 11, 12},
+        {1000, 101, 102},
+    };
+    print_diagsums((int *)c3, 3);
+    return (0);
 }
