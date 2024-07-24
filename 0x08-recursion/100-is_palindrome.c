@@ -1,9 +1,9 @@
-int _strlen(char *str);
+int _strlen_recursion(char *s);
 int helper(char *str, int st, int en);
 
 int is_palindrome(char *s)
 {
-    return helper(s, 0, _strlen(s) - 1);
+    return helper(s, 0, _strlen_recursion(s) - 1);
 }
 
 int helper(char *str, int st, int en)
@@ -16,11 +16,12 @@ int helper(char *str, int st, int en)
     return (helper(str, st + 1, en - 1));
 }
 
-int _strlen(char *str)
+int _strlen_recursion(char *s)
 {
-    int i = 0, j;
+    if (s[0] == '\0')
+    {
+        return (0);
+    }
 
-    for (j = 0; str[j]; j++)
-        i++;
-    return i;
+    return (1 + _strlen_recursion(s + 1));
 }
