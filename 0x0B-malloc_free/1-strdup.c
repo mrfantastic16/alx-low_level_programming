@@ -12,11 +12,18 @@ int _strlen(char *str);
 char *_strdup(char *str)
 {
 	int i, l;
-	char *cstr = malloc(_strlen(str) + 1);
+	char *cstr;
 
-	if (str == NULL || cstr == NULL)
+	if (!str)
 		return (NULL);
-	for (i = 0, l = _strlen(str) + 1; i < l; i++)
+
+	l = _strlen(str) + 1;
+	cstr = malloc(l);
+
+	if (!cstr)
+		return (NULL);
+
+	for (i = 0; i < l; i++)
 	{
 		cstr[i] = str[i];
 	}
