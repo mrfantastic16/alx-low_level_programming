@@ -1,47 +1,97 @@
 #include "main.h"
 #include <stdlib.h>
 
-char **strtow(char *str)
+int word_len(char *str);
+int count_words(char *str);
+char **strtow(char *str);
+
+/**
+ * word_len - Locates the index making the end of the first
+ * word contained within a string.
+ *
+ * @str: The string to be searched.
+ *
+ * Return: The index marking the end of the initial word pointed to by str.
+ */
+int word_len(char *str)
 {
-	char **words_ar;
-	int words = num_words(str);
-	int i;
+	int i = 0, len = 0;
 
-	words_arr = malloc(sizeof(char *) * words);
-	if (!words_arr)
-		return (NULL);
-
-	for (i = 0; str[i]; i++)
+	while (*(str + i) && *(str + i) != ' ')
 	{
-
+		len++;
+		i++;
 	}
+
+	return (len);
 }
 
-int num_words(char *str)
+/**
+ * count_words - counts the number of words contained within a string.
+ * @str: The string to be searched.
+ *
+ * Return: The number of words contained within str.
+ */
+int count_words(char *str)
 {
-	int count = 0, i;
-	int in_word = 0;
+	int i = 0, words = 0;
 
 	for (i = 0; str[i]; i++)
 	{
-		if (str[i] != ' ' && in_word == 0)
-			in_word = 1;
-		else if (str[i] == ' ' && in_word == 1)
+		if (*(str + i) != ' ')
 		{
-			count++;
-			in_word = 0;
+			words++;
+			i += word_len(str + i);
 		}
 	}
-	if (in_word == 1):
-		count++;
-	return (count);
+	return (words);
 }
 
-int let_word(char *str)
+/**
+ * strtow - Splits a string into words.
+ * @str: The string to be split.
+ *
+ * Return: if str = NULL, str = "", or function fails - NULL.
+ * otherwise - a pointer to an array of strings (words).
+ */
+char **strtow(char *str)
 {
-	int i;
+	char **strings;
+	int index = 0, words, w, letters, l;
 
-	for (i = 0; str[i]; i++)
-		continue;
-	return (i);
+	if (!str || !str[0])
+		return (NULL);
+
+	words = count_words(str);
+	if (words == 0)
+		return (NULL);
+
+	strings = malloc(sizeof(char *) * (words + 1));
+	if (!strings)
+		return (NULL);
+
+	for (w = 0; w < words; w++)
+	{
+		while (str[index] == ' ')
+			index++;
+		letters = word_len(str + index);
+
+		strings[w] = malloc(sizeof(char) * (letters + 1));
+
+		if (!strings[w])
+		{
+			for (; w >= 0; w--)
+				free(strings[w]);
+			free(strings);
+			return (NULL);
+		}
+
+		for (l = 0; l < letters; l++)
+			strings[w][l] = str[index++];
+		strings[w][l] = '\0';
+	}
+	strings[w] = NULL;
+
+	return (strings);
 }
+
