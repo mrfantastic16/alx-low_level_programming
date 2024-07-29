@@ -1,5 +1,12 @@
 #include <stdlib.h>
 
+/**
+ * array_range - returns a ranged array of ints
+ * @min: minimum range
+ * @max: maximum range
+ *
+ * Return: array
+ */
 int *array_range(int min, int max)
 {
 	int *a_int;
