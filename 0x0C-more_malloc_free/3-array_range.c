@@ -1,8 +1,9 @@
 #include <stdlib.h>
 
-nt *array_range(int min, int max)
+int *array_range(int min, int max)
 {
 	int *a_int;
+	int i;
 
 	if (min > max)
 		return (NULL);
@@ -12,7 +13,7 @@ nt *array_range(int min, int max)
 		return (NULL);
 
 	for (i = 0; min <= max; i++, min++)
-		ar[i] = min;
+		a_int[i] = min;
 
-	return (ar);
+	return (a_int);
 }
