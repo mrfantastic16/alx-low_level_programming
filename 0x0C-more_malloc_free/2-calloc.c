@@ -12,8 +12,8 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	char *array;
 	unsigned int i;
 
-	if (!nmemb && !size)
-		return (NULL);
+	if (!nmemb || !size)
+		return (malloc(0));
 
 	array = malloc(nmemb * size);
 	if (!array)
