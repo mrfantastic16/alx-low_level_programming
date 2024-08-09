@@ -1,1 +1,0 @@
-A pointer is a variable that contains a memory address
